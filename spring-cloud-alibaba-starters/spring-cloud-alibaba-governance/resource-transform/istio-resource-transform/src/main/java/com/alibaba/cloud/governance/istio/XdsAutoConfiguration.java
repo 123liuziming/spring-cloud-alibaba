@@ -18,6 +18,8 @@ package com.alibaba.cloud.governance.istio;
 
 import java.util.List;
 
+import com.alibaba.cloud.commons.governance.auth.rule.AuthRules;
+import com.alibaba.cloud.commons.governance.event.AuthDataChangedEvent;
 import com.alibaba.cloud.governance.istio.filter.XdsResolveFilter;
 import com.alibaba.cloud.governance.istio.filter.impl.AuthXdsResolveFilter;
 import com.alibaba.cloud.governance.istio.filter.impl.LabelRoutingXdsResolveFilter;
@@ -32,6 +34,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -56,6 +60,20 @@ public class XdsAutoConfiguration {
 	@Bean
 	public XdsChannel xdsChannel() {
 		return new XdsChannel(xdsConfigProperties);
+	}
+
+	class AuthDummyListener implements ApplicationListener<AuthDataChangedEvent> {
+
+		@Override
+		public void onApplicationEvent(AuthDataChangedEvent event) {
+			System.out.println(event.toString());
+		}
+
+	}
+
+	@Bean
+	public AuthDummyListener authDummyListener() {
+		return new AuthDummyListener();
 	}
 
 	@Bean
@@ -94,13 +112,13 @@ public class XdsAutoConfiguration {
 	}
 
 	@Bean
-	EdsProtocol edsProtocol(XdsChannel xdsChannel,
+	public EdsProtocol edsProtocol(XdsChannel xdsChannel,
 			XdsScheduledThreadPool xdsScheduledThreadPool) {
 		return new EdsProtocol(xdsChannel, xdsScheduledThreadPool, xdsConfigProperties);
 	}
 
 	@Bean
-	RdsProtocol rdsProtocol(XdsChannel xdsChannel,
+	public RdsProtocol rdsProtocol(XdsChannel xdsChannel,
 			XdsScheduledThreadPool xdsScheduledThreadPool,
 			List<XdsResolveFilter<List<RouteConfiguration>>> filters) {
 		return new RdsProtocol(xdsChannel, xdsScheduledThreadPool, xdsConfigProperties,

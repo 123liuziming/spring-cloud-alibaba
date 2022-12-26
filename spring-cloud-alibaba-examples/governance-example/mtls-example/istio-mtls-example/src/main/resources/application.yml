@@ -1,0 +1,15 @@
+server:
+  port: ${SERVER_PORT:80}
+spring:
+  cloud:
+    governance:
+      auth:
+        enabled: ${ISTIO_AUTH_ENABLE:true}
+    istio:
+      config:
+        enabled: ${ISTIO_CONFIG_ENABLE:true}
+        host: ${ISTIOD_ADDR:112.124.12.171}
+        port: ${ISTIOD_PORT:15012}
+        polling-pool-size: ${POLLING_POOL_SIZE:10}
+        polling-time: ${POLLING_TIME:10}
+        istiod-token: ${ISTIOD_TOKEN:eyJhbGciOiJSUzI1NiIsImtpZCI6IlFlUWVSRnNvM0xLZ1J1TjlkajFKeHAzeEJra2tFTWNfZ1J5bllYUDI0VzQifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZW1vLWJvb2tpbmZvIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InJhdGluZ3MtdG9rZW4tOGhqc24iLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoicmF0aW5ncyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImY1ZjAxMWZmLTQ2ZDAtNDdiMS05M2UwLWZhMGEwZDU4NThiNCIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZW1vLWJvb2tpbmZvOnJhdGluZ3MifQ.Aw6aPz9N2goNpKLDGs_l3PsfKq3abU3r7LJIixFfQw9g7xiVTvkmEG-8O4t3WCWNwy4O7De0A_w-mcwm8zciQXu4sNLAIS_rCrr2r_PGjC-GXwKgn1lvmmMI1iSweYZSHrJk9n-xGhlWmpfV7WhOqgzR-VGATvbeEGxkpBnUMVv5Mj662k2tF9cpf53CK9PK21HaPd910xJsMmzfkhrccTvT21Nom3br5594xcxpKVpXkMlUkDLOU3mQFxJnEGACFlNcerCBExkLanEtzLWu3HS8E4vauPXAbdLmbKZfE-Zz5nUvPkn5VPuDFIKt0r2Z4tbfPCFyfqJfp_174XGjvw}

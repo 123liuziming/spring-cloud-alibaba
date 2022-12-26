@@ -35,6 +35,8 @@ import io.grpc.netty.shaded.io.netty.handler.ssl.SslContext;
 import io.grpc.netty.shaded.io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import io.grpc.stub.MetadataUtils;
 import io.grpc.stub.StreamObserver;
+import istio.v1.auth.Ca;
+import istio.v1.auth.IstioCertificateServiceGrpc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -130,6 +132,21 @@ public class XdsChannel implements AutoCloseable {
 		header.put(key, "Bearer " + this.istiodToken);
 		stub = MetadataUtils.attachHeaders(stub, header);
 		return stub.streamAggregatedResources(observer);
+	}
+
+	public void createCertificateSignRequest(Ca.IstioCertificateRequest request,
+			StreamObserver<Ca.IstioCertificateResponse> observer) {
+		if (channel == null) {
+			return;
+		}
+		IstioCertificateServiceGrpc.IstioCertificateServiceStub stub = IstioCertificateServiceGrpc
+				.newStub(channel);
+		Metadata header = new Metadata();
+		Metadata.Key<String> key = Metadata.Key.of("authorization",
+				Metadata.ASCII_STRING_MARSHALLER);
+		header.put(key, "Bearer " + this.istiodToken);
+		stub = MetadataUtils.attachHeaders(stub, header);
+		stub.createCertificate(request, observer);
 	}
 
 }

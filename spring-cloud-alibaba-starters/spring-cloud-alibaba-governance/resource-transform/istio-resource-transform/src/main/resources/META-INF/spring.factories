@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.alibaba.cloud.governance.istio.XdsAutoConfiguration
+com.alibaba.cloud.governance.istio.XdsAutoConfiguration, \
+com.alibaba.cloud.governance.istio.SdsAutoConfiguration

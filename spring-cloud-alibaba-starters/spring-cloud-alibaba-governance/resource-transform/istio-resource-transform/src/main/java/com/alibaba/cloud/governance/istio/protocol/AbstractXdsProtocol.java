@@ -161,7 +161,7 @@ public abstract class AbstractXdsProtocol<T>
 				requestObserverMap.put(id, requestObserver);
 			}
 		}
-		sendXdsRequest(requestObserver, resourceNames);
+		sendXdsRequest(requestObserverMap.get(id), resourceNames);
 		try {
 			return future.get();
 		}
