@@ -15,7 +15,7 @@
     <properties>
         <java.version>1.8</java.version>
         <!-- Envoy Api Versions -->
-        <envoy-api.version>0.1.27</envoy-api.version>
+        <envoy-api.version>0.1.32</envoy-api.version>
     </properties>
 
     <dependencies>
