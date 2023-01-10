@@ -12,6 +12,12 @@
     <artifactId>spring-cloud-starter-alibaba-istio</artifactId>
     <name>Spring Cloud Alibaba Istio</name>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <!-- Envoy Api Versions -->
+        <envoy-api.version>0.1.27</envoy-api.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.grpc</groupId>
@@ -31,6 +37,7 @@
         <dependency>
             <groupId>io.envoyproxy.controlplane</groupId>
             <artifactId>api</artifactId>
+            <version>${envoy-api.version}</version>
         </dependency>
 
         <dependency>
@@ -80,8 +87,5 @@
         </dependency>
 
     </dependencies>
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
 
 </project>
