@@ -39,12 +39,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>io.github.hakky54</groupId>
-			<artifactId>sslcontext-kickstart</artifactId>
-			<version>${kickstart-version}</version>
-		</dependency>
-
 
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>

@@ -34,7 +34,7 @@ import javax.net.ssl.X509ExtendedTrustManager;
 
 import com.alibaba.cloud.governance.istio.sds.AbstractCertManager;
 import com.alibaba.cloud.mtls.MtlsSslStoreProvider;
-import nl.altindag.ssl.SSLFactory;
+import com.alibaba.cloud.mtls.ssl.SSLFactory;
 
 public class MtlsClientSSLContext {
 

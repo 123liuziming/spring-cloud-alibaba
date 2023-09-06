@@ -21,8 +21,8 @@ import java.security.KeyStore;
 import com.alibaba.cloud.governance.istio.sds.CertPair;
 import com.alibaba.cloud.governance.istio.sds.CertUpdateCallback;
 import com.alibaba.cloud.mtls.MtlsSslStoreProvider;
-import nl.altindag.ssl.SSLFactory;
-import nl.altindag.ssl.util.SSLFactoryUtils;
+import com.alibaba.cloud.mtls.ssl.SSLFactory;
+import com.alibaba.cloud.mtls.ssl.util.SSLFactoryUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
